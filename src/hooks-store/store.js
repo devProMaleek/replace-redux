@@ -7,8 +7,8 @@ let actions = {}
 const useStore = () => {
   const setState = useState(globalState)[1];
 
-  const dispatch = (actionIdentifiers) => {
-    const newState = actions[actionIdentifiers](globalState);
+  const dispatch = (actionIdentifiers, payload) => {
+    const newState = actions[actionIdentifiers](globalState, payload);
     globalState = {...globalState, ...newState};
 
     for (const listener of listeners) {
