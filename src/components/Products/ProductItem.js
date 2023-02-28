@@ -2,13 +2,13 @@ import React from 'react';
 
 import Card from '../UI/Card';
 import './ProductItem.css';
-import { useProductsContext } from '../../context/products-context';
+import useStore  from '../../hooks-store/store'
 
 const ProductItem = (props) => {
-  const { toggleFavorites } = useProductsContext();
+  const dispatch = useStore()[1]
 
   const toggleFavHandler = () => {
-    toggleFavorites(props.id);
+    dispatch('TOGGLE_FAVORITE', props.id);
   };
 
   return (

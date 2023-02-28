@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 let globalState = {}
 let listeners = []
@@ -22,7 +22,7 @@ const useStore = () => {
     return () => {
       listeners = listeners.filter(listener => listener !== setState);
     }
-  }, [])
+  }, [setState])
 
   return [globalState, dispatch]; 
   
@@ -34,3 +34,5 @@ export const initStore = (userActions, initialState) => {
   }
   actions = {...actions, ...userActions};
 }
+
+export default useStore;
